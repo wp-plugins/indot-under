@@ -1,5 +1,5 @@
 ﻿=== Plugin Name ===
-Contributors: Ricardo Magalhães, gremory, Noé Cunha, Delfim Rodrigues
+Contributors: shut1x, gremory, noecunha, Delfim Rodrigues
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7KG6KTTFEV4RS
 Tags: under, under construction, under maintenance, timer, countdown timer, splash screen, landing page, homepage screen, seo ready
 Requires at least: 3.5
