@@ -15,14 +15,23 @@ A simple plugin, to make your scheduled launch or scheduled maintenance task eas
 Under by indot is a simple plugin to make your scheduled launch or scheduled maintenance task easier! You have access to a countdown where you set the time to launch or finish your maintenance, its easy to use and allow you to work your SEO so even when your site isnt live yet you can get some rank in google!
 
 **Current Features**
+
 *Display Under*
+
 *Translate Everything*
+
 *Set a Countdown*
+
 *Go Live when your Countdown Reaches 0*
+
 *Customize your Favicon*
+
 *SEO Friendly*
+
 *Cool Design*
+
 *Whitelist by IP and/or Roles*
+
 *Status Code*
 
 == Installation ==
