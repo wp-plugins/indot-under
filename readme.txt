@@ -1,4 +1,4 @@
-=== Plugin Name ===
+﻿=== Plugin Name ===
 Contributors: Ricardo Magalhães, Michael Matias, Noé Cunha, Delfim Rodrigues
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7KG6KTTFEV4RS
 Tags: under, under construction, under maintenance, timer, countdown timer, splash screen, landing page, homepage screen, seo ready
@@ -13,6 +13,15 @@ A simple plugin, to make your scheduled launch or scheduled maintenance task eas
 == Description ==
 
 Under by indot is a simple plugin to make your scheduled launch or scheduled maintenance task easier! You have access to a countdown where you set the time to launch or finish your maintenance, its easy to use and allow you to work your SEO so even when your site isnt live yet you can get some rank in google!
+
+**Current Features**
+* Display Under
+* Translate Everything
+* Set a Countdown
+* Go Live when your Countdown Reaches 0
+* Customize your Favicon
+* SEO Friendly
+* Cool Design
 
 == Installation ==
 
