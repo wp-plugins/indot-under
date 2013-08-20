@@ -16,23 +16,16 @@ Under by indot is a simple plugin to make your scheduled launch or scheduled mai
 
 **Current Features**
 
-*Display Under*
 
-*Translate Everything*
-
-*Set a Countdown*
-
-*Go Live when your Countdown Reaches 0*
-
-*Customize your Favicon*
-
-*SEO Friendly*
-
-*Cool Design*
-
-*Whitelist by IP and/or Roles*
-
-*Status Code*
+* Display Under
+* Translate Everything
+* Set a Countdown
+* Go Live when your Countdown Reaches 0
+* Customize your Favicon
+* SEO Friendly
+* Cool Design
+* Whitelist by IP and/or Roles
+* Status Code
 
 == Installation ==
 
