@@ -28,24 +28,8 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<?php 
-		/*
-			Remove any styles that the theme may be loading.
-		*/
-		function indotRemoveStyles($queuedStyles) {
-			global $wp_styles;
-			foreach($wp_styles->queue as $style)
-			{
-				if(!in_array($style, $queuedStyles)){
-					wp_dequeue_style( $style );
-				}
-			}
-		}
 		global $wp_styles;
-		add_action('wp_head', 'indotRemoveStyles', 1, 1);
 		do_action('wp_head', $wp_styles->queue);
-	?>
-	<?php
-	
 	?>
 	<title><?php echo $IndotUnderSettings["pagetitle"]["text"];?></title>
 	<?php if($IndotUnderSettings["seo"]["enable"]){?>
