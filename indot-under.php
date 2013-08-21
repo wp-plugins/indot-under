@@ -172,7 +172,7 @@ function indot_under_settings_plugin_link( $links, $file)
 add_filter( 'plugin_action_links', 'indot_under_settings_plugin_link', 10, 2 );
 
 
-function indot_remove_styles($queuedStyles) {
+function indot_under_remove_styles($queuedStyles) {
 	global $wp_styles;
 	foreach($wp_styles->queue as $style)
 	{
@@ -181,6 +181,6 @@ function indot_remove_styles($queuedStyles) {
 		}
 	}
 }
-add_action('wp_head', 'indot_remove_styles', 1, 1);
+add_action('wp_head', 'indot_under_remove_styles', 1, 1);
 
 ?>
