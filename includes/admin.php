@@ -38,33 +38,41 @@ function indot_admin_notices() {
 	// If a newer version is available, add the update
 
  	$screen_id = get_current_screen()->id;
- 	if ($screen_id == 'toplevel_page_indot-under-settings' && checkUpdateVersion()) {
+ 	if ($screen_id == 'toplevel_page_indot-under-settings' && indot_check_update_version()) {
     	printf( '<div class="updated"> 
-    		<p> A <strong>new version</strong> has been released! Click <strong><a href="'.downloadUpdateVersion().'">here</a></strong> to update!<br /> Feel free to support the development of this plugin! (hint: you can buy us a beer!) </p> </div>');
+    		<p> A <strong>new version</strong> has been released! Click <strong><a href="'.indot_download_update_version().'">here</a></strong> to update!<br /> Feel free to support the development of this plugin! (hint: you can buy us a beer!) </p> </div>');
  	}
 }
  
-function checkUpdateVersion(){
-	require_once (INDOT_UNDER_DIR.'includes/indot_autoupdate.php');
-	$indot_under_current_version = INDOT_UNDER_VERSION;
-	$indot_under_remote_path = 'http://localhost:81/update.php';
-	$indot_under_slug = INDOT_UNDER_BASENAME;
-	$obj = new indot_auto_update ($indot_under_current_version, $indot_under_remote_path, $indot_under_slug);
-
-	if (version_compare($indot_under_current_version, $obj->getRemote_version(), '<')) {
+function indot_check_update_version(){
+	$payload = array(
+	  'action' => 'plugin_information',
+	  'request' => serialize(
+	    (object)array(
+	        'slug' => 'indot-under',
+	        'fields' => array('description' => true)
+	     )
+	   )
+	);
+	$body = wp_remote_post( 'http://api.wordpress.org/plugins/info/1.0/', array( 'body' => $payload) );
+	if (version_compare(INDOT_UNDER_VERSION, unserialize($body['body'])->version, '<')) {
         return true;
     }
 	return false;
 }
 
-function downloadUpdateVersion(){
-	require_once (INDOT_UNDER_DIR.'includes/indot_autoupdate.php');
-	$indot_under_current_version = INDOT_UNDER_VERSION;
-	$indot_under_remote_path = 'http://localhost:81/update.php';
-	$indot_under_slug = INDOT_UNDER_BASENAME;
-	$obj = new indot_auto_update ($indot_under_current_version, $indot_under_remote_path, $indot_under_slug);
-
-	return $obj->getRemote_information()->download_link;
+function indot_download_update_version(){
+	$payload = array(
+	  'action' => 'plugin_information',
+	  'request' => serialize(
+	    (object)array(
+	        'slug' => 'indot-under',
+	        'fields' => array('description' => true)
+	     )
+	   )
+	);
+	$body = wp_remote_post( 'http://api.wordpress.org/plugins/info/1.0/', array( 'body' => $payload) );
+	return unserialize($body['body'])->download_link;
 }
 
- ?>
+?>

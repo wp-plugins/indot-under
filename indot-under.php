@@ -151,17 +151,6 @@ function indot_under_register_scripts($hook) {
 }
 add_action( 'admin_enqueue_scripts', 'indot_under_register_scripts' );
 
-function indot_under_auto_update()
-{
-	require_once (INDOT_UNDER_DIR.'includes/indot_autoupdate.php');
-	$indot_under_current_version = INDOT_UNDER_VERSION;
-	$indot_under_remote_path = 'http://localhost:81/update.php';
-	$indot_under_slug = INDOT_UNDER_BASENAME;
-	new indot_auto_update ($indot_under_current_version, $indot_under_remote_path, $indot_under_slug);
-
-}
-add_action('init', 'indot_under_auto_update');
-
 function indot_under_timer_hook(){
 	update_option('IndotUnderActive',false);
 }
@@ -181,5 +170,17 @@ function indot_under_settings_plugin_link( $links, $file)
     return $links;
 }
 add_filter( 'plugin_action_links', 'indot_under_settings_plugin_link', 10, 2 );
+
+
+function indot_remove_styles($queuedStyles) {
+	global $wp_styles;
+	foreach($wp_styles->queue as $style)
+	{
+		if(!in_array($style, $queuedStyles)){
+			wp_dequeue_style( $style );
+		}
+	}
+}
+add_action('wp_head', 'indot_remove_styles', 1, 1);
 
 ?>
