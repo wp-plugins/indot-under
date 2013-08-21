@@ -34,17 +34,17 @@
 }
 
 add_action( 'admin_notices', 'indot_admin_notices' );
-function indot_admin_notices() {
+function indot_under_admin_notices() {
 	// If a newer version is available, add the update
 
  	$screen_id = get_current_screen()->id;
- 	if ($screen_id == 'toplevel_page_indot-under-settings' && indot_check_update_version()) {
+ 	if ($screen_id == 'toplevel_page_indot-under-settings' && indot_under_check_update_version()) {
     	printf( '<div class="updated"> 
-    		<p> A <strong>new version</strong> has been released! Click <strong><a href="'.indot_download_update_version().'">here</a></strong> to update!<br /> Feel free to support the development of this plugin! (hint: you can buy us a beer!) </p> </div>');
+    		<p> A <strong>new version</strong> has been released! Click <strong><a href="'.indot_under_download_update_version().'">here</a></strong> to update!<br /> Feel free to support the development of this plugin! (hint: you can buy us a beer!) </p> </div>');
  	}
 }
  
-function indot_check_update_version(){
+function indot_under_check_update_version(){
 	$payload = array(
 	  'action' => 'plugin_information',
 	  'request' => serialize(
@@ -61,7 +61,7 @@ function indot_check_update_version(){
 	return false;
 }
 
-function indot_download_update_version(){
+function indot_under_download_update_version(){
 	$payload = array(
 	  'action' => 'plugin_information',
 	  'request' => serialize(
