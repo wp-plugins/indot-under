@@ -2,7 +2,7 @@
 /**
 Plugin Name: Indot Under
 Description: Under by indot is a simple plugin to make your scheduled launch or scheduled maintenance task easier!
-Version: 1.0.0
+Version: 1.0.1
 Author: Indot
 Author URI: http://indot.pt
 Plugin URI: http://indot-under.indot.pt
@@ -29,7 +29,7 @@ License: GPLv2 or later
 /**
  * Define some useful constants
  **/
-define('INDOT_UNDER_VERSION', '1.0.0');
+define('INDOT_UNDER_VERSION', '1.0.1');
 define('INDOT_UNDER_DIR', plugin_dir_path(__FILE__));
 define('INDOT_UNDER_URL', plugin_dir_url(__FILE__));
 define('INDOT_UNDER_BASENAME', plugin_basename(__FILE__));
@@ -38,7 +38,50 @@ define('INDOT_UNDER_BASENAME', plugin_basename(__FILE__));
  * 
  **/
 function indot_under_load(){
-	date_default_timezone_set(get_option('timezone_string'));
+	if(strcasecmp(get_option('timezone_string'),'') === 0){
+		$timezones = array( 
+	        '-12'=>'Pacific/Kwajalein', 
+	        '-11'=>'Pacific/Samoa', 
+	        '-10'=>'Pacific/Honolulu', 
+	        '-9'=>'America/Juneau', 
+	        '-8'=>'America/Los_Angeles', 
+	        '-7'=>'America/Denver', 
+	        '-6'=>'America/Mexico_City', 
+	        '-5'=>'America/New_York', 
+	        '-4'=>'America/Caracas', 
+	        '-3.5'=>'America/St_Johns', 
+	        '-3'=>'America/Argentina/Buenos_Aires', 
+	        '-2'=>'Atlantic/Azores',
+	        '-1'=>'Atlantic/Azores', 
+	        '0'=>'Europe/London', 
+	        '1'=>'Europe/Paris', 
+	        '2'=>'Europe/Helsinki', 
+	        '3'=>'Europe/Moscow', 
+	        '3.5'=>'Asia/Tehran', 
+	        '4'=>'Asia/Baku', 
+	        '4.5'=>'Asia/Kabul', 
+	        '5'=>'Asia/Karachi', 
+	        '5.5'=>'Asia/Calcutta', 
+	        '6'=>'Asia/Colombo', 
+	        '7'=>'Asia/Bangkok', 
+	        '8'=>'Asia/Singapore', 
+	        '9'=>'Asia/Tokyo', 
+	        '9.5'=>'Australia/Darwin', 
+	        '10'=>'Pacific/Guam', 
+	        '11'=>'Asia/Magadan', 
+	        '12'=>'Asia/Kamchatka' 
+    	); 
+		if(!in_array(get_option('gmt_offset'), $timezones)){
+			date_default_timezone_set('UTC');
+		}
+		else{
+			date_default_timezone_set($timezones[get_option('gmt_offset')]);
+		}
+	}
+	else{
+		date_default_timezone_set(get_option('timezone_string'));	
+	}
+	
 	if(!get_option('IndotUnderActive'))
 		add_option('IndotUnderActive',false);
 	if(!get_option('IndotUnderSettings')){
@@ -96,6 +139,7 @@ function indot_under_set() {
 		if($showUnder){
 			if($option['statuscode']['enable']){
 				if($option['statuscode']['code'] == 200){
+					add_action('wp_head', 'indot_under_remove_styles', 1, 1);
 					http_response_code(200);
 					require_once(INDOT_UNDER_DIR.'includes/under/index.php');
 					die();
@@ -105,16 +149,19 @@ function indot_under_set() {
 					die();
 				}
 				else if($option['statuscode']['code'] == 503){
+					add_action('wp_head', 'indot_under_remove_styles', 1, 1);
 					http_response_code(503);
 					require_once(INDOT_UNDER_DIR.'includes/under/index.php');
 					die();
 				}
 				else {
+					add_action('wp_head', 'indot_under_remove_styles', 1, 1);
 					require_once(INDOT_UNDER_DIR.'includes/under/index.php');
 					die();
 				}
 			}
 			else{
+				add_action('wp_head', 'indot_under_remove_styles', 1, 1);
 				require_once(INDOT_UNDER_DIR.'includes/under/index.php');
 				die();
 			}
@@ -181,6 +228,6 @@ function indot_under_remove_styles($queuedStyles) {
 		}
 	}
 }
-add_action('wp_head', 'indot_under_remove_styles', 1, 1);
+
 
 ?>

@@ -33,7 +33,7 @@
 	}
 }
 
-add_action( 'admin_notices', 'indot_admin_notices' );
+add_action( 'admin_notices', 'indot_under_admin_notices' );
 function indot_under_admin_notices() {
 	// If a newer version is available, add the update
 

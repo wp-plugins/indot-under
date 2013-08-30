@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: under, under construction, under maintenance, timer, countdown timer, splash screen, landing page, homepage screen, seo ready
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,10 +63,17 @@ Yes you can, you can choose to display or hide every single element in the under
 
 == Changelog ==
 
+= 1.0.1 =
+* Now compatible with wordpress 3.6.
+* Critical bugs fixed.
+
 = 1.0.0 =
 * First Version to be released.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Critical bugs fixed.
 
 = 1.0.0 =
 First Version to be released.
