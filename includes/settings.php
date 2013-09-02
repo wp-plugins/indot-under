@@ -355,7 +355,7 @@
 					<label name="indot_under_whitelist_localip">External IP</label>
 					</th>
 					<td>
-					<label id="indot_under_whitelist_myip_label" myip="<?php echo $m[1]; ?>"><?php echo $_SERVER['REMOTE_ADDR']; ?></label>
+					<label id="indot_under_whitelist_myip_label" myip="<?php echo $_SERVER['REMOTE_ADDR']; ?>"><?php echo $_SERVER['REMOTE_ADDR']; ?></label>
 					<input type="submit" class='button-primary' name="indot_under_whitelist_addmyip" id="indot_under_whitelist_addmyip" value="Add My IP"/>
 					</td>
 				</tr>
