@@ -2,7 +2,7 @@
 /**
 Plugin Name: Indot Under
 Description: Under by indot is a simple plugin to make your scheduled launch or scheduled maintenance task easier!
-Version: 1.0.2
+Version: 1.0.3
 Author: Indot
 Author URI: http://indot.pt
 Plugin URI: http://indot-under.indot.pt
@@ -29,7 +29,7 @@ License: GPLv2 or later
 /**
  * Define some useful constants
  **/
-define('INDOT_UNDER_VERSION', '1.0.2');
+define('INDOT_UNDER_VERSION', '1.0.3');
 define('INDOT_UNDER_DIR', plugin_dir_path(__FILE__));
 define('INDOT_UNDER_URL', plugin_dir_url(__FILE__));
 define('INDOT_UNDER_BASENAME', plugin_basename(__FILE__));
@@ -121,17 +121,11 @@ function indot_under_set() {
 		$showUnder = true;
 
 		if($option['whitelist']['enable']){
-			$externalContent = file_get_contents('http://checkip.dyndns.com/');
-			preg_match('/Current IP Address: ([\[\]:.[0-9a-fA-F]+)</', $externalContent, $m);
-
 			global $current_user;
 			$user_roles = $current_user->roles;
 			$result = array_intersect(array_map('strtolower', $user_roles), array_map('strtolower', $option['whitelist']['rolelist']));
 
-			if(in_array($m[1], $option['whitelist']['iplist'])){
-				$showUnder = false;
-			}
-			else if(!empty($result)){
+			if(in_array($_SERVER['REMOTE_ADDR'], $option['whitelist']['iplist']) && !empty($result)){
 				$showUnder = false;
 			}
 		}

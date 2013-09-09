@@ -55,10 +55,14 @@ function indot_under_check_update_version(){
 	   )
 	);
 	$body = wp_remote_post( 'http://api.wordpress.org/plugins/info/1.0/', array( 'body' => $payload) );
-	if (version_compare(INDOT_UNDER_VERSION, unserialize($body['body'])->version, '<')) {
-        return true;
-    }
-	return false;
+	if(!isset($body->WP_Error)){
+		if (version_compare(INDOT_UNDER_VERSION, unserialize($body['body'])->version, '<')) {
+    		return true;
+		}
+	}
+	else{
+		return false;
+	}
 }
 
 function indot_under_download_update_version(){
@@ -72,7 +76,12 @@ function indot_under_download_update_version(){
 	   )
 	);
 	$body = wp_remote_post( 'http://api.wordpress.org/plugins/info/1.0/', array( 'body' => $payload) );
-	return unserialize($body['body'])->download_link;
+	if(!isset($body->WP_Error)){
+		return unserialize($body['body'])->download_link;
+	}
+	else{
+		return false;
+	}
 }
 
 ?>
