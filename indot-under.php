@@ -2,7 +2,7 @@
 /**
 Plugin Name: Indot Under
 Description: Under by indot is a simple plugin to make your scheduled launch or scheduled maintenance task easier!
-Version: 1.0.3
+Version: 1.0.4
 Author: Indot
 Author URI: http://indot.pt
 Plugin URI: http://indot-under.indot.pt

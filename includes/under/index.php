@@ -29,7 +29,7 @@
 <head>
 	<?php 
 		global $wp_styles;
-		do_action('wp_head', $wp_styles->queue);
+		do_action('wp_footer', $wp_styles->queue);
 	?>
 	<title><?php echo $IndotUnderSettings["pagetitle"]["text"];?></title>
 	<?php if($IndotUnderSettings["seo"]["enable"]){?>
