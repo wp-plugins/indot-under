@@ -1,10 +1,10 @@
 ﻿=== Plugin Name ===
-Contributors: shut1x, gremory, noecunha, Delfim Carvalhosa
+Contributors: shut1x, gremory, noecunha, Delfim Carvalhosa, Paulo Mora
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7KG6KTTFEV4RS
 Tags: under, under construction, under maintenance, timer, countdown timer, splash screen, landing page, homepage screen, seo ready
 Requires at least: 3.5
-Tested up to: 3.6.1
-Stable tag: 1.0.4
+Tested up to: 4.2.1
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
